@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1d1d1d" />
+    <title>TEDxNIIT × Auréline | Official Merch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell" id="top">
+      <header class="site-header">
+        <a class="brand brand--tedx" href="#top" aria-label="TEDxNIIT home">
+          <img src="/assets/tedx-niit-logo.png" alt="TEDxNIIT University" />
+        </a>
+        <a class="brand brand--aureline" href="#about" aria-label="Auréline">
+          <img src="/assets/aureline-logo.png" alt="Auréline — What's Broken is Beautiful" />
+        </a>
+      </header>
+
+      <section class="intro" aria-labelledby="hero-title">
+        <h1 id="hero-title"><span>Wear a</span><strong>Conversation</strong></h1>
+        <p class="intro__copy">A limited edition piece for the people who question what is, and imagine what could be.</p>
+      </section>
+
+      <section class="viewer-section" id="product" aria-label="Product image gallery">
+        <div class="viewer-frame">
+          <img id="product-image" src="/assets/sp-front-angle.png" alt="Front view of the TEDxNIIT special edition t-shirt" />
+        </div>
+
+        <nav class="view-switcher" aria-label="T-shirt images">
+          <button class="view-button is-active" type="button" data-image="/assets/sp-front-angle.png" data-alt="Front view of the TEDxNIIT special edition t-shirt">Front</button>
+          <button class="view-button" type="button" data-image="/assets/sp-back-angle.png" data-alt="Back view of the TEDxNIIT special edition t-shirt">Back</button>
+          <button class="view-button" type="button" data-image="/assets/sp-front-detail.png" data-alt="Close-up view of the TEDxNIIT special edition t-shirt">Close up</button>
+          <button class="view-button" type="button" data-image="/assets/sp-back-detail.png" data-alt="Detail view of the TEDxNIIT special edition t-shirt">Details</button>
+        </nav>
+      </section>
+
+      <section class="info-grid" id="about">
+        <article class="info-card size-card" id="fit">
+          <h2>Find your fit <span class="unit-label">( in cms )</span></h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Size</th><th>Chest</th><th>Waist</th><th>Shoulder</th><th>Length</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>S</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
+                <tr><th>M</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
+                <tr><th>L</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
+                <tr><th>XL</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
+                <tr><th>XXL</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="info-card merch-card">
+          <h2>About the merch</h2>
+          <ol class="feature-list">
+            <li>340 GSM, fabric cotton</li>
+            <li>Oversized fit</li>
+            <li>DTF print</li>
+            <li>Durable &amp; machine washable</li>
+          </ol>
+        </article>
+      </section>
+
+      <section class="purchase-panel" aria-label="Early bird offer">
+        <div class="offer-lockup">
+          <p class="offer-title">Early bird offer!!!</p>
+          <div class="price-card"><span class="price">₹549</span><span class="original-price">₹799</span></div>
+        </div>
+        <button class="buy-button" id="open-purchase" type="button">Buy now</button>
+      </section>
+
+      <footer class="site-footer">
+        <span class="footer-rule"></span>
+        <p>Contact us at +91 9876543210 for support</p>
+      </footer>
+    </main>
+
+    <section class="purchase-view" id="purchase-view" hidden aria-label="Purchase details">
+      <div class="purchase-view__shell">
+        <header class="purchase-view__header">
+          <a class="brand brand--tedx" href="#top" aria-label="TEDxNIIT home">
+            <img src="/assets/tedx-niit-logo.png" alt="TEDxNIIT University" />
+          </a>
+          <a class="brand brand--aureline" href="#about" aria-label="Auréline">
+            <img src="/assets/aureline-logo.png" alt="Auréline — What's Broken is Beautiful" />
+          </a>
+        </header>
+        <button class="back-button" id="close-purchase" type="button" aria-label="Back to merch page">←</button>
+
+        <div class="purchase-view__body">
+          <article class="purchase-card payment-card">
+            <h2>Pay here using QR</h2>
+            <img class="payment-qr" src="/assets/payment-qr.png" alt="Payment QR code" />
+            <p class="payment-id">ADHYA4126SAINI@OKICICI</p>
+          </article>
+
+          <article class="purchase-card details-card">
+            <h2>Your details</h2>
+            <form class="purchase-form" id="purchase-form">
+              <input id="full-name" name="fullName" type="text" placeholder="Full name" aria-label="Full name" autocomplete="name" required />
+              <input id="phone" name="phone" type="tel" placeholder="Phone no" aria-label="Phone number" autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter exactly 10 digits" required />
+              <input id="email" name="email" type="email" placeholder="Email" aria-label="Email" autocomplete="email" required />
+              <input id="transaction-id" name="transactionId" type="text" placeholder="Transaction ID" aria-label="Transaction ID" inputmode="numeric" pattern="[0-9]{12}" minlength="12" maxlength="12" title="Enter exactly 12 digits" required />
+              <div class="size-options" role="group" aria-label="Choose a size">
+                <button type="button" data-size="S">S</button><button type="button" data-size="M">M</button><button type="button" data-size="L">L</button><button type="button" data-size="XL">XL</button><button type="button" data-size="XXL">XXL</button>
+              </div>
+              <input id="size" name="size" type="hidden" required />
+              <input id="proof-file" name="proof" type="file" accept="image/*,.pdf" hidden required />
+              <label class="upload-proof" for="proof-file"><span class="upload-icon" aria-hidden="true">↥</span> <span id="proof-label">Upload transaction proof</span></label>
+              <button class="submit-purchase" id="submit-purchase" type="submit">Click here to purchase</button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
