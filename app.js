@@ -5,7 +5,7 @@ const merchPath = `${githubPagesBase}/merch`;
 const canonicalPath = window.location.pathname.replace(/\/+$/, "") || "/";
 
 if (canonicalPath !== merchPath) {
-  window.location.replace(merchPath);
+  window.history.replaceState({}, "", merchPath);
 }
 
 const productModel = document.querySelector("#product-model");
