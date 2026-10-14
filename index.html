@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -29,27 +28,13 @@
 
       <section class="viewer-section" id="product" aria-label="Product image gallery">
         <div class="viewer-frame">
-          <model-viewer
-            id="product-model"
-            src="./assets/merch-27.glb"
-            alt="TEDxNIIT special edition t-shirt"
-            camera-controls
-            touch-action="pan-y"
-            interaction-prompt="none"
-            shadow-intensity="0.35"
-            exposure="0.85"
-            camera-orbit="0deg 75deg 105%"
-            field-of-view="28deg"
-            loading="eager">
-          </model-viewer>
-          <img id="product-image" src="./assets/sp-front-angle.png" alt="Front view of the TEDxNIIT special edition t-shirt" hidden />
+          <img id="product-image" src="./assets/front.png" alt="Front view of the TEDxNIIT special edition t-shirt" />
         </div>
 
         <nav class="view-switcher" aria-label="T-shirt views">
-          <button class="view-button is-active" type="button" data-view="free">Free cam</button>
-          <button class="view-button" type="button" data-view="image" data-image="./assets/sp-front-angle.png" data-alt="Front view of the TEDxNIIT special edition t-shirt">Front</button>
-          <button class="view-button" type="button" data-view="image" data-image="./assets/sp-back-angle.png" data-alt="Back view of the TEDxNIIT special edition t-shirt">Back</button>
-          <button class="view-button" type="button" data-view="image" data-image="./assets/sp-front-detail.png" data-alt="Close-up view of the TEDxNIIT special edition t-shirt">Close up</button>
+          <button class="view-button is-active" type="button" data-view="image" data-image="./assets/front.png" data-alt="Front view of the TEDxNIIT special edition t-shirt">Front</button>
+          <button class="view-button" type="button" data-view="image" data-image="./assets/back.png" data-alt="Back view of the TEDxNIIT special edition t-shirt">Back</button>
+          <button class="view-button" type="button" data-view="image" data-image="./assets/detail.png" data-alt="Close-up view of the TEDxNIIT special edition t-shirt">Close up</button>
         </nav>
       </section>
 
@@ -59,14 +44,14 @@
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Size</th><th>Chest</th><th>Waist</th><th>Shoulder</th><th>Length</th></tr>
+                <tr><th>Size</th><th>Length</th><th>Chest</th><th>Sleeve</th><th>Shoulder</th></tr>
               </thead>
               <tbody>
-                <tr><th>S</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
-                <tr><th>M</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
-                <tr><th>L</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
-                <tr><th>XL</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
-                <tr><th>XXL</th><td>01–01</td><td>01–01</td><td>01–01</td><td>01–01</td></tr>
+                <tr><th>S</th><td>24</td><td>20</td><td>20</td><td>17</td></tr>
+                <tr><th>M</th><td>25</td><td>21</td><td>21</td><td>18</td></tr>
+                <tr><th>L</th><td>26</td><td>22</td><td>22</td><td>19</td></tr>
+                <tr><th>XL</th><td>27</td><td>23</td><td>23</td><td>20</td></tr>
+                <tr><th>XXL</th><td>28</td><td>24</td><td>24</td><td>21</td></tr>
               </tbody>
             </table>
           </div>
@@ -86,18 +71,18 @@
       <section class="purchase-panel" aria-label="Early bird offer">
         <div class="offer-lockup">
           <p class="offer-title">Early bird offer!!!</p>
-          <div class="price-card"><span class="price">₹549</span><span class="original-price">₹799</span></div>
+          <div class="price-card"><span class="price">₹555</span><span class="original-price">₹620</span></div>
         </div>
-        <button class="buy-button" id="open-purchase" type="button">Buy now</button>
+        <button class="buy-button" id="open-purchase" type="button">Register now</button>
       </section>
 
       <footer class="site-footer">
         <span class="footer-rule"></span>
-        <p>Contact us at +91 9876543210 for support</p>
+        <p>Contact : <a href="tel:+918905529082">Aadhya Saini</a> (Sponsorship &amp; Finance Core)</p>
       </footer>
     </main>
 
-    <section class="purchase-view" id="purchase-view" hidden aria-label="Purchase details">
+    <section class="purchase-view" id="purchase-view" hidden aria-label="Registration details">
       <div class="purchase-view__shell">
         <header class="purchase-view__header">
           <div class="brand brand--tedx" role="img" aria-label="TEDxNIIT home">
@@ -109,27 +94,19 @@
         </header>
         <button class="back-button" id="close-purchase" type="button" aria-label="Back to product page">←</button>
 
-        <div class="purchase-view__body">
-          <article class="purchase-card payment-card">
-            <h2>Pay here using QR</h2>
-            <img class="payment-qr" src="./assets/payment-qr.png" alt="Payment QR code" />
-            <p class="payment-id">ADHYA4126SAINI@OKICICI</p>
-          </article>
-
-          <article class="purchase-card details-card">
+        <div class="purchase-view__body registration-body">
+          <article class="purchase-card details-card registration-card">
             <h2>Your details</h2>
             <form class="purchase-form" id="purchase-form">
               <input id="full-name" name="fullName" type="text" placeholder="Full name" aria-label="Full name" autocomplete="name" required />
               <input id="phone" name="phone" type="tel" placeholder="Phone no" aria-label="Phone number" autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter exactly 10 digits" required />
               <input id="email" name="email" type="email" placeholder="Email" aria-label="Email" autocomplete="email" required />
-              <input id="transaction-id" name="transactionId" type="text" placeholder="Transaction ID" aria-label="Transaction ID" inputmode="numeric" pattern="[0-9]{12}" minlength="12" maxlength="12" title="Enter exactly 12 digits" required />
+              <input id="enrollment-no" name="enrollmentNo" type="text" placeholder="Enrollment no" aria-label="Enrollment number" autocomplete="off" pattern="[A-Za-z0-9]{10}" minlength="10" maxlength="10" title="Enter exactly 10 characters" required />
               <div class="size-options" role="group" aria-label="Choose a size">
                 <button type="button" data-size="S">S</button><button type="button" data-size="M">M</button><button type="button" data-size="L">L</button><button type="button" data-size="XL">XL</button><button type="button" data-size="XXL">XXL</button>
               </div>
               <input id="size" name="size" type="hidden" required />
-              <input id="proof-file" name="proof" type="file" accept="image/*,.pdf" hidden required />
-              <label class="upload-proof" for="proof-file"><span class="upload-icon" aria-hidden="true">↥</span> <span id="proof-label">Upload transaction proof</span></label>
-              <button class="submit-purchase" id="submit-purchase" type="submit">Click here to purchase</button>
+              <button class="submit-purchase" id="submit-purchase" type="submit">Click here to register</button>
               <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
             </form>
           </article>

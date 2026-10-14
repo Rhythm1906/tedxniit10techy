@@ -1,4 +1,3 @@
-const productModel = document.querySelector("#product-model");
 const productImage = document.querySelector("#product-image");
 const viewButtons = document.querySelectorAll(".view-button");
 const openPurchaseButton = document.querySelector("#open-purchase");
@@ -8,10 +7,8 @@ const purchaseForm = document.querySelector("#purchase-form");
 const submitPurchaseButton = document.querySelector("#submit-purchase");
 const statusMessage = document.querySelector("#form-status");
 const sizeInput = document.querySelector("#size");
-const proofInput = document.querySelector("#proof-file");
-const proofLabel = document.querySelector("#proof-label");
 const phoneInput = document.querySelector("#phone");
-const transactionIdInput = document.querySelector("#transaction-id");
+const enrollmentInput = document.querySelector("#enrollment-no");
 
 const APPS_SCRIPT_ENDPOINT = import.meta.env?.VITE_APPS_SCRIPT_ENDPOINT;
 
@@ -21,22 +18,19 @@ const keepDigitsOnly = (input, maxLength) => {
 };
 
 phoneInput.addEventListener("input", () => keepDigitsOnly(phoneInput, 10));
-transactionIdInput.addEventListener("input", () => keepDigitsOnly(transactionIdInput, 12));
+enrollmentInput.addEventListener("input", () => {
+  const enrollment = enrollmentInput.value
+    .replace(/[^a-zA-Z0-9]/g, "")
+    .slice(0, 10)
+    .toUpperCase();
+
+  if (enrollmentInput.value !== enrollment) enrollmentInput.value = enrollment;
+});
 
 viewButtons.forEach((button) => {
   button.addEventListener("click", () => {
     viewButtons.forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
-
-    const isFreeCam = button.dataset.view === "free";
-    productModel.hidden = !isFreeCam;
-    productImage.hidden = isFreeCam;
-
-    if (isFreeCam) {
-      productModel.setAttribute("camera-orbit", "0deg 75deg 105%");
-      productModel.setAttribute("field-of-view", "28deg");
-      return;
-    }
 
     productImage.src = button.dataset.image;
     productImage.alt = button.dataset.alt;
@@ -51,22 +45,6 @@ document.querySelectorAll("[data-size]").forEach((button) => {
   });
 });
 
-proofInput.addEventListener("change", () => {
-  proofLabel.textContent = proofInput.files[0]?.name || "Upload transaction proof";
-});
-
-const readFileAsBase64 = (file) => new Promise((resolve, reject) => {
-  if (!file) {
-    resolve("");
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.addEventListener("load", () => resolve(String(reader.result).split(",")[1] || ""));
-  reader.addEventListener("error", () => reject(new Error("The transaction proof could not be read.")));
-  reader.readAsDataURL(file);
-});
-
 const setStatus = (message, state = "") => {
   statusMessage.textContent = message;
   statusMessage.dataset.state = state;
@@ -75,23 +53,12 @@ const setStatus = (message, state = "") => {
 purchaseForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const proofFile = proofInput.files[0];
-  if (!proofFile) {
-    setStatus("Please upload your transaction proof.", "error");
-    proofInput.focus();
-    return;
-  }
-
-  if (!purchaseForm.reportValidity()) return;
   if (!sizeInput.value) {
     setStatus("Please choose a size.", "error");
     return;
   }
 
-  if (proofFile && proofFile.size > 5 * 1024 * 1024) {
-    setStatus("Please upload a proof smaller than 5 MB.", "error");
-    return;
-  }
+  if (!purchaseForm.reportValidity()) return;
 
   submitPurchaseButton.disabled = true;
   setStatus("Submitting your details…", "pending");
@@ -102,16 +69,12 @@ purchaseForm.addEventListener("submit", async (event) => {
     }
 
     const formData = new FormData(purchaseForm);
-    const proofBase64 = await readFileAsBase64(proofFile);
     const payload = {
       fullName: formData.get("fullName").trim(),
       phone: formData.get("phone").trim(),
       email: formData.get("email").trim(),
       size: formData.get("size"),
-      transactionId: formData.get("transactionId").trim(),
-      proofBase64,
-      proofName: proofFile?.name || "",
-      proofMimeType: proofFile?.type || ""
+      enrollmentNo: formData.get("enrollmentNo").trim()
     };
 
     // Apps Script web apps do not expose CORS headers by default. The plain-text
@@ -124,10 +87,9 @@ purchaseForm.addEventListener("submit", async (event) => {
       body: JSON.stringify(payload)
     });
 
-    setStatus("Details submitted. We’ll verify your payment and contact you shortly.", "success");
+    setStatus("Registration submitted successfully.", "success");
     purchaseForm.reset();
     sizeInput.value = "";
-    proofLabel.textContent = "Upload transaction proof";
     document.querySelectorAll("[data-size]").forEach((item) => item.classList.remove("is-selected"));
   } catch (error) {
     setStatus("Could not submit right now. Please check your connection and try again.", "error");
