@@ -8,16 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="page-shell" id="top">
       <header class="site-header">
         <a class="brand brand--tedx" href="#top" aria-label="TEDxNIIT home">
-          <img src="/assets/tedx-niit-logo.png" alt="TEDxNIIT University" />
+          <img src="./assets/tedx-niit-logo.png" alt="TEDxNIIT University" />
         </a>
         <a class="brand brand--aureline" href="#about" aria-label="Auréline">
-          <img src="/assets/aureline-logo.png" alt="Auréline — What's Broken is Beautiful" />
+          <img src="./assets/aureline-logo.png" alt="Auréline — What's Broken is Beautiful" />
         </a>
       </header>
 
@@ -28,14 +29,27 @@
 
       <section class="viewer-section" id="product" aria-label="Product image gallery">
         <div class="viewer-frame">
-          <img id="product-image" src="/assets/sp-front-angle.png" alt="Front view of the TEDxNIIT special edition t-shirt" />
+          <model-viewer
+            id="product-model"
+            src="./assets/merch-27.glb"
+            alt="TEDxNIIT special edition t-shirt"
+            camera-controls
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.35"
+            exposure="0.85"
+            camera-orbit="0deg 75deg 105%"
+            field-of-view="28deg"
+            loading="eager">
+          </model-viewer>
+          <img id="product-image" src="./assets/sp-front-angle.png" alt="Front view of the TEDxNIIT special edition t-shirt" hidden />
         </div>
 
-        <nav class="view-switcher" aria-label="T-shirt images">
-          <button class="view-button is-active" type="button" data-image="/assets/sp-front-angle.png" data-alt="Front view of the TEDxNIIT special edition t-shirt">Front</button>
-          <button class="view-button" type="button" data-image="/assets/sp-back-angle.png" data-alt="Back view of the TEDxNIIT special edition t-shirt">Back</button>
-          <button class="view-button" type="button" data-image="/assets/sp-front-detail.png" data-alt="Close-up view of the TEDxNIIT special edition t-shirt">Close up</button>
-          <button class="view-button" type="button" data-image="/assets/sp-back-detail.png" data-alt="Detail view of the TEDxNIIT special edition t-shirt">Details</button>
+        <nav class="view-switcher" aria-label="T-shirt views">
+          <button class="view-button is-active" type="button" data-view="free">Free cam</button>
+          <button class="view-button" type="button" data-view="image" data-image="./assets/sp-front-angle.png" data-alt="Front view of the TEDxNIIT special edition t-shirt">Front</button>
+          <button class="view-button" type="button" data-view="image" data-image="./assets/sp-back-angle.png" data-alt="Back view of the TEDxNIIT special edition t-shirt">Back</button>
+          <button class="view-button" type="button" data-view="image" data-image="./assets/sp-front-detail.png" data-alt="Close-up view of the TEDxNIIT special edition t-shirt">Close up</button>
         </nav>
       </section>
 
@@ -87,10 +101,10 @@
       <div class="purchase-view__shell">
         <header class="purchase-view__header">
           <a class="brand brand--tedx" href="#top" aria-label="TEDxNIIT home">
-            <img src="/assets/tedx-niit-logo.png" alt="TEDxNIIT University" />
+            <img src="./assets/tedx-niit-logo.png" alt="TEDxNIIT University" />
           </a>
           <a class="brand brand--aureline" href="#about" aria-label="Auréline">
-            <img src="/assets/aureline-logo.png" alt="Auréline — What's Broken is Beautiful" />
+            <img src="./assets/aureline-logo.png" alt="Auréline — What's Broken is Beautiful" />
           </a>
         </header>
         <button class="back-button" id="close-purchase" type="button" aria-label="Back to merch page">←</button>
@@ -98,7 +112,7 @@
         <div class="purchase-view__body">
           <article class="purchase-card payment-card">
             <h2>Pay here using QR</h2>
-            <img class="payment-qr" src="/assets/payment-qr.png" alt="Payment QR code" />
+            <img class="payment-qr" src="./assets/payment-qr.png" alt="Payment QR code" />
             <p class="payment-id">ADHYA4126SAINI@OKICICI</p>
           </article>
 
@@ -123,6 +137,6 @@
       </div>
     </section>
 
-    <script type="module" src="/app.js"></script>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

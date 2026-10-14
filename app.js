@@ -1,8 +1,14 @@
+const githubPagesBase = window.location.hostname.endsWith("github.io")
+  ? "/tedxniit10techy"
+  : "";
+const merchPath = `${githubPagesBase}/merch`;
 const canonicalPath = window.location.pathname.replace(/\/+$/, "") || "/";
-if (canonicalPath !== "/merch") {
-  window.location.replace("/merch");
+
+if (canonicalPath !== merchPath) {
+  window.location.replace(merchPath);
 }
 
+const productModel = document.querySelector("#product-model");
 const productImage = document.querySelector("#product-image");
 const viewButtons = document.querySelectorAll(".view-button");
 const openPurchaseButton = document.querySelector("#open-purchase");
@@ -17,7 +23,7 @@ const proofLabel = document.querySelector("#proof-label");
 const phoneInput = document.querySelector("#phone");
 const transactionIdInput = document.querySelector("#transaction-id");
 
-const APPS_SCRIPT_ENDPOINT = import.meta.env.VITE_APPS_SCRIPT_ENDPOINT;
+const APPS_SCRIPT_ENDPOINT = import.meta.env?.VITE_APPS_SCRIPT_ENDPOINT;
 
 const keepDigitsOnly = (input, maxLength) => {
   const digitsOnly = input.value.replace(/\D/g, "").slice(0, maxLength);
@@ -27,15 +33,21 @@ const keepDigitsOnly = (input, maxLength) => {
 phoneInput.addEventListener("input", () => keepDigitsOnly(phoneInput, 10));
 transactionIdInput.addEventListener("input", () => keepDigitsOnly(transactionIdInput, 12));
 
-document.querySelectorAll("[data-image]").forEach((button) => {
-  const preload = new Image();
-  preload.src = button.dataset.image;
-});
-
 viewButtons.forEach((button) => {
   button.addEventListener("click", () => {
     viewButtons.forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
+
+    const isFreeCam = button.dataset.view === "free";
+    productModel.hidden = !isFreeCam;
+    productImage.hidden = isFreeCam;
+
+    if (isFreeCam) {
+      productModel.setAttribute("camera-orbit", "0deg 75deg 105%");
+      productModel.setAttribute("field-of-view", "28deg");
+      return;
+    }
+
     productImage.src = button.dataset.image;
     productImage.alt = button.dataset.alt;
   });
