@@ -32,8 +32,8 @@ button { color: inherit; }
   margin: 0;
   border: 0;
   background:
-    linear-gradient(180deg, rgba(12, 12, 12, .54) 0%, rgba(12, 10, 10, .57) 34%, rgba(5, 4, 4, .9) 100%),
-    url("./assets/castle-background.png") center center / cover fixed no-repeat;
+    linear-gradient(180deg, rgba(8, 7, 6, .68) 0%, rgba(8, 6, 5, .7) 34%, rgba(3, 2, 2, .93) 100%),
+    url("./assets/website-background.png") center center / cover fixed no-repeat;
 }
 .page-shell::after {
   position: absolute;
@@ -110,7 +110,7 @@ th:first-child, td:first-child { text-align: left; }.size-card thead th { color:
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 
 .purchase-view[hidden] { display: none; }
-.purchase-view { position: fixed; z-index: 100; inset: 0; overflow-y: auto; color: var(--white); background: linear-gradient(180deg, rgba(13, 11, 11, .7), rgba(7, 6, 6, .94)), url("./assets/castle-background.png") center center / cover fixed no-repeat; }
+.purchase-view { position: fixed; z-index: 100; inset: 0; overflow-y: auto; color: var(--white); background: linear-gradient(180deg, rgba(8, 7, 6, .72), rgba(3, 2, 2, .95)), url("./assets/website-background.png") center center / cover fixed no-repeat; }
 .purchase-view__shell { position: relative; width: min(100%, 470px); min-height: 100%; margin: 0 auto; border-left: 1px solid rgba(225, 225, 225, .18); border-right: 1px solid rgba(225, 225, 225, .18); }
 .purchase-view__header { display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 8px 23px 9px; border-bottom: 1px solid rgba(225, 225, 225, .24); border-radius: 0 0 16px 16px; background: rgba(62, 62, 62, .5); backdrop-filter: blur(7px); }
 .back-button { position: absolute; top: 110px; left: 16px; z-index: 2; width: 34px; height: 34px; padding: 0; border: 0; color: rgba(248, 247, 244, .88); background: transparent; cursor: pointer; font: 400 1.65rem/1 Arial, sans-serif; }.back-button:hover { color: var(--gold); }
