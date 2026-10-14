@@ -34,9 +34,6 @@ jobs:
         env:
           VITE_APPS_SCRIPT_ENDPOINT: ${{ secrets.VITE_APPS_SCRIPT_ENDPOINT }}
 
-      - name: Create merch route
-        run: mkdir -p dist/merch && cp dist/index.html dist/merch/index.html
-
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

@@ -1,13 +1,3 @@
-const githubPagesBase = window.location.hostname.endsWith("github.io")
-  ? "/tedxniit10techy"
-  : "";
-const merchPath = `${githubPagesBase}/merch`;
-const canonicalPath = window.location.pathname.replace(/\/+$/, "") || "/";
-
-if (canonicalPath !== merchPath) {
-  window.location.replace(merchPath);
-}
-
 const productModel = document.querySelector("#product-model");
 const productImage = document.querySelector("#product-image");
 const viewButtons = document.querySelectorAll(".view-button");
