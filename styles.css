@@ -90,7 +90,7 @@ th:first-child, td:first-child { text-align: left; }.size-card thead th { color:
 .feature-list { display: grid; gap: 24px; margin: 2px 0 0; padding: 0; list-style: none; color: rgba(248, 247, 244, .9); font-size: clamp(.8rem, 1.4vw, 1.1rem); font-weight: 400; line-height: 1.2; text-transform: uppercase; white-space: nowrap; }.feature-list li::before { content: counter(item, decimal-leading-zero) " . "; counter-increment: item; }.feature-list { counter-reset: item; }.merch-card .feature-list li::before { color: var(--gold); }
 
 .purchase-panel { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: end; gap: 12px; width: min(90%, 930px); margin: 51px auto 0; }.offer-title { margin: 0 0 5px; color: var(--gold); font-size: clamp(.78rem, 1.35vw, 1.05rem); font-weight: 800; line-height: 1; text-transform: uppercase; }.price-card { display: flex; align-items: baseline; gap: 8px; width: fit-content; min-width: 122px; padding: 9px 14px 8px; border: 1px solid rgba(225, 225, 225, .28); border-radius: 18px; background: rgba(42, 35, 34, .75); }.price { font-size: clamp(1.3rem, 2.8vw, 2rem); font-weight: 800; }.original-price { color: rgba(235, 235, 235, .72); font-size: clamp(.7rem, 1.3vw, .95rem); text-decoration: line-through; }.buy-button { min-height: 52px; border: 1px solid rgba(228, 228, 228, .22); border-radius: 19px; background: rgba(75, 45, 30, .62); color: #e4c561; cursor: pointer; font-size: clamp(1.25rem, 2.8vw, 2rem); font-weight: 800; line-height: 1; text-transform: uppercase; }
-.site-footer { width: 100%; margin: 42px 0 0; padding: 42px 5% 23px; text-align: center; background: #000; }.footer-rule { display: block; height: 2px; margin-bottom: 18px; background: rgba(225, 225, 225, .28); }.site-footer p { margin: 0; color: rgba(248, 247, 244, .64); font-size: clamp(.54rem, 1.05vw, .74rem); font-weight: 400; text-transform: uppercase; }.site-footer a { color: inherit; text-decoration: none; transition: color 180ms ease, text-shadow 180ms ease; }.site-footer a:hover, .site-footer a:focus-visible { color: var(--white); text-shadow: 0 0 12px rgba(248, 247, 244, .35); }
+.site-footer { width: 100%; margin: 42px 0 0; padding: 42px 5% 23px; text-align: center; background: #000; }.footer-rule { display: block; height: 2px; margin-bottom: 18px; background: rgba(225, 225, 225, .28); }.site-footer p { margin: 0; color: rgba(248, 247, 244, .64); font-size: clamp(.54rem, 1.05vw, .74rem); font-weight: 400; text-transform: uppercase; }.site-footer .footer-title { margin-bottom: 10px; color: var(--white); font-size: clamp(.7rem, 1.25vw, .9rem); font-weight: 800; letter-spacing: .08em; }.footer-contact + .footer-contact { margin-top: 6px; }.footer-label { display: inline-block; width: 4.5em; color: var(--gold); font-weight: 700; text-align: right; }.footer-separator { display: inline-block; width: 1.25em; color: var(--gold); text-align: center; }.footer-role { color: rgba(248, 247, 244, .5); }.site-footer a { color: inherit; text-decoration: none; transition: color 180ms ease, text-shadow 180ms ease; }.site-footer a:hover, .site-footer a:focus-visible { color: var(--white); text-shadow: 0 0 12px rgba(248, 247, 244, .35); }
 
 @media (max-width: 700px) {
   body { padding: 0; }
@@ -139,6 +139,15 @@ th:first-child, td:first-child { text-align: left; }.size-card thead th { color:
 .size-options button.is-selected { color: #e0b415; border-color: rgba(215, 169, 0, .9); background: rgba(105, 62, 36, .9); box-shadow: 0 0 12px rgba(215, 169, 0, .18); }
 .upload-proof:hover, .upload-proof:focus-within { border-color: rgba(215, 169, 0, .7); color: #e0b415; }
 .submit-purchase:disabled { cursor: wait; opacity: .58; }
+
+/* Keep all six size choices readable without crowding the mobile form. */
+@media (min-width: 701px) {
+  .size-options { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .size-options { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 .form-status { min-height: 1.2em; margin: 0; color: rgba(244, 238, 235, .72); font-size: .66rem; line-height: 1.35; text-align: center; }
 .form-status[data-state="pending"] { color: #e0b415; }
 .form-status[data-state="success"] { color: #a9d8a4; }
